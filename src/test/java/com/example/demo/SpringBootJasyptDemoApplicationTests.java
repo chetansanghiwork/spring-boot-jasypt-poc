@@ -18,7 +18,7 @@ class SpringBootJasyptDemoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	
+/*	
     @Test
     public void whenDecryptedKey1Needed_GetFromService() {
         SimpleJasyptService service = appCtx
@@ -31,27 +31,44 @@ class SpringBootJasyptDemoApplicationTests {
         assertEquals(
           "Password@1", 
           service.getKey1UsingEnvironment(environment));
+    }
+*/
+	
+    @Test
+    public void whenDecryptedKey1Needed_GetFromService() {
+        SimpleJasyptService service = appCtx
+          .getBean(SimpleJasyptService.class);
+     
+        assertEquals("This is a plain message", service.getKey1());
+     
+        Environment environment = appCtx.getBean(Environment.class);
+     
+        assertEquals(
+          "This is a plain message", 
+          service.getKey1UsingEnvironment(environment));
     }    	
     
+    
+ 
     @Test
     public void whenDecryptedKey2Needed_GetFromService() {
         SimpleJasyptService service = appCtx.getBean(SimpleJasyptService.class);
-        assertEquals("Password@2", service.getKey2());
+        assertEquals("This is a plain message and more", service.getKey2());
         
         Environment environment = appCtx.getBean(Environment.class);
      
         assertEquals(
-          "Password@2", 
+          "This is a plain message and more", 
           service.getKey2UsingEnvironment(environment));
 
     }
-    
+/*    
     @Test
     public void whenConfiguredExcryptorUsed_ReturnCustomEncryptor() {
         Environment environment = appCtx.getBean(Environment.class);
         assertEquals("Password@3", environment.getProperty("customkey"));
     }
-    
+*/    
         
 
 }

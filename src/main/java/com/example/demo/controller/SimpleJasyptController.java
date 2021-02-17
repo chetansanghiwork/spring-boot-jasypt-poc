@@ -22,7 +22,11 @@ public class SimpleJasyptController {
     @ResponseBody
     public String getKey() {
     	logger.info("key 1 = " + service.getKey1());
-        return "<h1> key 1 = " + service.getKey1() + "</h1>";
+    	logger.info("key 2 = " + service.getKey2());
+    	StringBuffer sb = new StringBuffer();
+    	sb.append("<h1> key 1 = " + service.getKey1() + "</h1>");
+    	sb.append("<h2> key 2 = " + service.getKey2() + "</h2>");
+        return sb.toString();
     }
 
 }
