@@ -45,6 +45,13 @@ class SpringBootJasyptDemoApplicationTests {
           service.getKey2UsingEnvironment(environment));
 
     }
+    
+    @Test
+    public void whenConfiguredExcryptorUsed_ReturnCustomEncryptor() {
+        Environment environment = appCtx.getBean(Environment.class);
+        assertEquals("Password@3", environment.getProperty("customkey"));
+    }
+    
         
 
 }
